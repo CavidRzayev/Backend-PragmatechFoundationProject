@@ -1,0 +1,64 @@
+{% extends "admin/base.html" %}
+{% block content %}
+
+
+
+<form action="/admin/footer" method="POST">
+    <div class="form-group">
+        <label for="about">About</label>
+        <input type="text" class="form-control" name="about" id="about" placeholder="About">
+    </div>
+
+
+    <div class="form-group">
+        <label for="connect">Connect</label>
+        <input type="connect" class="form-control" name="connect" id="connect" placeholder="connect">
+    </div>
+
+    <div class="form-group">
+        <label for="navagation">Navagation</label>
+        <input type="navagation" class="form-control" name="navagation" id="navagation" placeholder="navagation">
+    </div>
+
+    <div class="form-group">
+        <label for="services">Services</label>
+        <input type="services" class="form-control" name="services" id="services" placeholder="services">
+    </div>
+
+    <div class="form-group">
+        <label for="contact">Contact</label>
+        <input type="contact" class="form-control" name="contact" id="contact" placeholder="contact">
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">About</th>
+            <th scope="col">Connect</th>
+            <th scope="col">Navagation</th>
+            <th scope="col">Services</th>
+            <th scope="col">Contact</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in srvc %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.about}}</td>
+            <td>{{i.connect}}</td>
+            <td>{{i.navagation}}</td>
+            <td>{{i.services}}</td>
+            <td>{{i.contact}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

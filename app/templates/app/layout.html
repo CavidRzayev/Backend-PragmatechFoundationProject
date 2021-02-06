@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<!-- Mirrored from preview.colorlib.com/theme/orbit/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 23 Jan 2021 08:58:11 GMT -->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/app/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/app/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="../static/app/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../static/app/css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="../static/app/css/aos.css">
+  <link rel="stylesheet" href="../static/app/css/style.css">
+  <title>Orbit Free HTML Template by Colorlib</title>
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="100">
+  <div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close">
+        <span class="icofont-close js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div>
+  <nav class="site-nav js-site-navbar mb-5 site-navbar-target">
+    <div class="container">
+      <div class="site-navigation text-center">
+        <a href="index.html" class="d-block text-center float-left logo">JA</a>
+        <ul class="js-clone-nav ml-0 pl-0 d-none d-lg-inline-block site-menu mx-auto text-center">
+          <li class="active"><a href="#home-section" class="nav-link">Home</a></li>
+          <li><a href="#about-section" class="nav-link">About</a></li>
+          <li><a href="#portfolio-section" class="nav-link">Portfolio</a></li>
+          <li><a href="#services-section" class="nav-link">Services</a></li>
+          <li><a href="#resume-section" class="nav-link">Clients</a></li>
+          <li><a href="#blog-section" class="nav-link">Blog</a></li>
+          <li><a href="#contact-section" class="nav-link">Contact</a></li>
+        </ul>
+        <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block light d-lg-none"
+          data-toggle="collapse" data-target="#main-navbar">
+          <span></span>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="site-blocks-cover overlay" style="background-image: url(../static/app/js/hero_img.jpg);" data-aos="fade"
+    data-stellar-background-ratio="0.5" id="home-section">
+    <div class="container">
+      {% for i in Homm %}
+      <div class="row align-items-center justify-content-center text-center">
+        <div class="col-lg-8">
+          <h1 class="text-white" data-aos="fade-up" data-aos-delay="0">{{i.title}}
+          </h1>
+          <p data-aos="fade-up" data-aos-delay="100">{{i.text}} <a href="https://colorlib/.com"
+              class="font-weight-bold" target="_blank"></a></p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+    {% block content %}
+    
+    
+    {% endblock %}
+
+  <div class="site-footer">
+    <div class="footer-dots"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="widget">
+            <h3>About Orbit<span class="text-primary">.</span> </h3>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
+              blind texts.</p>
+          </div>
+          <div class="widget">
+            <h3>Connect</h3>
+            <ul class="list-unstyled social">
+              <li><a href="#"><span class="icon-instagram"></span></a></li>
+              <li><a href="#"><span class="icon-twitter"></span></a></li>
+              <li><a href="#"><span class="icon-facebook"></span></a></li>
+              <li><a href="#"><span class="icon-linkedin"></span></a></li>
+              <li><a href="#"><span class="icon-pinterest"></span></a></li>
+              <li><a href="#"><span class="icon-dribbble"></span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 ml-auto">
+          <div class="widget">
+            <h3>Navagation</h3>
+            <ul class="list-unstyled float-left links">
+              <li><a href="#">HTML5</a></li>
+              <li><a href="#">CSS3</a></li>
+              <li><a href="#">jQuery</a></li>
+              <li><a href="#">Bootstrap</a></li>
+              <li><a href="#">Javascript</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2">
+          <div class="widget">
+            <h3>Services</h3>
+            <ul class="list-unstyled float-left links">
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">eCommerce</a></li>
+              <li><a href="#">WordPress</a></li>
+              <li><a href="#">Frontend</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="widget">
+            <h3>Contact</h3>
+            <address>43 Raymouth Rd. Baltemoer, London 3910</address>
+            <ul class="list-unstyled links mb-4">
+              <li><a href="tel://11234567890">+1(123)-456-7890</a></li>
+              <li><a href="tel://11234567890">+1(123)-456-7890</a></li>
+              <li><a
+                  href="https://preview.colorlib.com/cdn-cgi/l/email-protection#4f262129200f22362b20222e2621612c2022"><span
+                    class="__cf_email__"
+                    data-cfemail="2d44434b426d40544942404c4443034e4240">[email&#160;protected]</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-12 text-center">
+          <p>
+
+            Copyright &copy;
+            <script data-cfasync="false"
+              src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+            <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with
+            <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com/"
+              target="_blank">Colorlib</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <script src="../static/app/js/jquery-3.4.1.min.js"></script>
+  <script src="../static/app/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../static/app/js/popper.min.js"></script>
+  <script src="../static/app/js/bootstrap.min.js"></script>
+  <script src="../static/app/js/jquery.easing.1.3.js"></script>
+  <script src="../static/app/js/jquery.stellar.min.js"></script>
+  <script src="../static/app/js/jquery.waypoints.min.js"></script>
+  <script src="../static/app/js/isotope.pkgd.min.js"></script>
+  <script src="../static/app/js/jquery.fancybox.min.js"></script>
+  <script src="../static/app/js/aos.js"></script>
+  <script src="../static/app/js/imagesloaded.pkgd.js"></script>
+  <script src="../static/app/js/custom.js"></script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+  </script>
+</body>
+
+<!-- Mirrored from preview.colorlib.com/theme/orbit/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 23 Jan 2021 08:58:25 GMT -->
+
+</html>

@@ -1,0 +1,50 @@
+{% extends "admin/base.html" %}
+{% block content %}
+
+<form action="/admin/blog" method="POST">
+    <!-- <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" class="form-control" >
+      </div> -->
+
+    <div class="form-group">
+        <label for="text">Text</label>
+        <input type="text" class="form-control" name="text" id="text" placeholder="Text">
+    </div>
+
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" name="title" id="title" placeholder="title">
+    </div>
+
+  
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <!-- <th scope="col">Date</th> -->
+            <th scope="col">Text</th>
+            <th scope="col">Title</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in blg %}
+        <tr>
+            <td>{{i.id}}</td>
+            <!-- <td>{{i.date}}</td> -->
+            <td>{{i.text}}</td>
+            <td>{{i.title}}</td>
+            <td><a href="/admin/blog/{{i.id}}"  ><i class="far fa-trash-alt"></i></a></td>
+            <!-- <td><a href="/admin/blog/{{i.id}}"><i class="far fa-edit"></i></a></td> -->
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
