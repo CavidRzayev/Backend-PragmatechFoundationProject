@@ -1,7 +1,7 @@
 {% extends "admin/base.html" %}
 {% block content %}
 
-<form action="/admin/blog" method="POST">
+<form action="/admin/blog" method="POST"   enctype="multipart/form-data">
     <!-- <div class="form-group">
         <label for="date">Date</label>
         <input type="date" id="date" name="date" class="form-control" >
@@ -17,6 +17,10 @@
         <input type="text" class="form-control" name="title" id="title" placeholder="title">
     </div>
 
+    <div class="form-group">
+        <label for="image">Image</label>
+        <input type="file" class="form-control" name="image" id="image" placeholder="image">
+    </div>
   
 
 
@@ -30,21 +34,20 @@
             <!-- <th scope="col">Date</th> -->
             <th scope="col">Text</th>
             <th scope="col">Title</th>
+            <th scope="col">Image</th>
             <th scope="col">Delete</th>
-            <th scope="col">Update</th>
         </tr>
     </thead>
     <tbody>
         {% for i in blg %}
         <tr>
             <td>{{i.id}}</td>
-            <!-- <td>{{i.date}}</td> -->
             <td>{{i.text}}</td>
             <td>{{i.title}}</td>
-            <td><a href="/admin/blog/{{i.id}}"  ><i class="far fa-trash-alt"></i></a></td>
-            <!-- <td><a href="/admin/blog/{{i.id}}"><i class="far fa-edit"></i></a></td> -->
+            <td>{{i.image}}</td>
+            <td><a href="/admin/blog/{{i.id}}"><i class="far fa-trash-alt"></i></a></td>
         </tr>
         {% endfor %}
-    </tbody>
+        </tbody>
 </table>
 {% endblock %}

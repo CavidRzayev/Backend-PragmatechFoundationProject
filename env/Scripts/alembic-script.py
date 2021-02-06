@@ -1,10 +1,10 @@
 #!c:\users\user\desktop\foundation-backend\env\scripts\python.exe
-# EASY-INSTALL-ENTRY-SCRIPT: 'alembic==1.5.3','console_scripts','alembic'
+# EASY-INSTALL-ENTRY-SCRIPT: 'alembic==1.5.4','console_scripts','alembic'
 import re
 import sys
 
 # for compatibility with easy_install; see #2198
-__requires__ = 'alembic==1.5.3'
+__requires__ = 'alembic==1.5.4'
 
 try:
     from importlib.metadata import distribution
@@ -30,4 +30,4 @@ globals().setdefault('load_entry_point', importlib_load_entry_point)
 
 if __name__ == '__main__':
     sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
-    sys.exit(load_entry_point('alembic==1.5.3', 'console_scripts', 'alembic')())
+    sys.exit(load_entry_point('alembic==1.5.4', 'console_scripts', 'alembic')())

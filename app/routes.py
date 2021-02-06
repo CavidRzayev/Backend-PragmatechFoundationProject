@@ -3,6 +3,9 @@ from forms import *
 # from app.models import ContactForm
 from models import *
 from flask import render_template,redirect,request,url_for,Blueprint
+import random
+import os
+
 
 @app.route('/',methods=["GET","POST"])
 def Index():

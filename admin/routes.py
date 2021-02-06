@@ -79,8 +79,14 @@ def deleteServices(id):
 def blog():
     blg=Blog.query.all()
     if request.method == "POST":
-        blg=Blog(text=request.form['text'],title=request.form['title'])
-        # date=datetime.today()
+        today = date.today()
+        rand=random.randint(1, 9999)
+        f = request.files['image']
+        newName=f"blogfile{rand}.{f.filename.split('.')[-1]}"
+        f.save(os.path.join(app.config['UPLOAD_PATH'],newName))
+        filePath=f"/{app.config['UPLOAD_PATH']}/{f.filename}" 
+        blg=Blog(text=request.form['text'],title=request.form['title'],image=filePath,time=today("%m/%d/%y")
+)
         db.session.add(blg)
         db.session.commit()
         return redirect ('/admin/blog')
