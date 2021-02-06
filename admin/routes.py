@@ -85,8 +85,7 @@ def blog():
         newName=f"blogfile{rand}.{f.filename.split('.')[-1]}"
         f.save(os.path.join(app.config['UPLOAD_PATH'],newName))
         filePath=f"/{app.config['UPLOAD_PATH']}/{f.filename}" 
-        blg=Blog(text=request.form['text'],title=request.form['title'],image=filePath,time=today("%m/%d/%y")
-)
+        blg=Blog(text=request.form['text'],title=request.form['title'],image=filePath,time=datetime("%m"))
         db.session.add(blg)
         db.session.commit()
         return redirect ('/admin/blog')
