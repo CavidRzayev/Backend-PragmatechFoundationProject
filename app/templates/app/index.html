@@ -32,78 +32,30 @@
         </div>
         <div class="filters" data-aos="fade-up" data-aos-delay="100">
             <ul>
-                <li class="active" data-filter="*">All</li>
-                <li data-filter=".packaging">Packaging</li>
-                <li data-filter=".mockup">Mockup</li>
-                <li data-filter=".typography">Typography</li>
-                <li data-filter=".photography">Photography</li>
+                <li class="active" id="all">All</li>
+                {% for i in ctg %}
+                <li  class="active" data-filter="{{i.id}} " id="{{i.id}}">{{i.name}}</li>
+                {% endfor %}
             </ul>
         </div>
         <div class="filters-content mb-5" data-aos="fade-up" data-aos-delay="200">
             <div class="row grid">
+                {% for i in prt %}
                 <div class="single-portfolio col-sm-4 all mockup">
-                    <a href="../static/app/images/work_5.jpg" data-fancybox="gal">
-                        <img src="../static/app/images/work_5.jpg" alt="Image" class="img-fluid">
+                    <a y={{i.image}} data-fancybox="gal">
+                        <img src={{i.image}} alt="Image" class="img-fluid">
                         <div class="contents">
-                            <h3>Card Vol. 3</h3>
-                            <div class="cat">Mockup</div>
+                            {% for c in ctg %}
+                            {% if  c.id==i.category_id %}
+                            <h3>{{c.name}}</h3>
+                            {% endif %}
+                            {% endfor %}
+                            <div class="cat">{{i.title}}</div>
                         </div>
                     </a>
                 </div>
-                <div class="single-portfolio col-sm-4 all typography">
-                    <a href="../static/app/images/work_1.jpg" data-fancybox="gal">
-                        <img src="../static/app/images/work_1.jpg" alt="Image" class="img-fluid">
-                        <div class="contents">
-                            <h3>House Design</h3>
-                            <div class="cat">Typography</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="single-portfolio col-sm-4 all mockup">
-                    <a href="../static/app/images/work_2.jpg" data-fancybox="gal">
-                        <img src="../static/app/images/work_2.jpg" alt="Image" class="img-fluid">
-                        <div class="contents">
-                            <h3>WoW</h3>
-                            <div class="cat">Mockup</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="single-portfolio col-sm-4 all packaging">
-                    <a href="../static/app/images/work_3.jpg" data-fancybox="gal">
-                        <img src="../static/app/images/work_3.jpg" alt="Image" class="img-fluid">
-                        <div class="contents">
-                            <h3>Seat</h3>
-                            <div class="cat">Packaging</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="single-portfolio col-sm-4 all typography">
-                    <a href="../static/app/images/work_4.jpg" data-fancybox="gal">
-                        <img src="../static/app/images/work_4.jpg" alt="Image" class="img-fluid">
-                        <div class="contents">
-                            <h3>Seat</h3>
-                            <div class="cat">Packaging</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="single-portfolio col-sm-4 all photography">
-                    <a href="../static/app/images/work_6.jpg" data-fancybox="gal">
-                        <img src="../static/app/images/work_6.jpg" alt="Image" class="img-fluid">
-                        <div class="contents">
-                            <h3>House Design</h3>
-                            <div class="cat">Photography</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="single-portfolio col-sm-4 all photography">
-                    <a href="../static/app/images/work_7.jpg" data-fancybox="gal">
-                        <img src="../static/app/images/work_7.jpg" alt="Image" class="img-fluid">
-                        <div class="contents">
-                            <h3>House Design</h3>
-                            <div class="cat">Photography</div>
-                        </div>
-                    </a>
-                </div>
+                {% endfor %}
+
             </div>
         </div>
     </div>
@@ -152,7 +104,7 @@
             <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="block-47 d-flex mb-5">
                     <div class="block-47-image">
-                        <img src="../static/app/images/person_1.jpg" alt="Image placeholder" class="img-fluid">
+                        <img src="{{i.image}}" alt="Image placeholder" class="img-fluid">
                     </div>
                     <blockquote class="block-47-quote">
                         <p>&ldquo;{{i.text}}&rdquo;</p>
@@ -182,12 +134,10 @@
                     <li data-aos="fade-up" data-aos-delay="100">
                         <a href="/blog/{{blg.id}}" class="d-block d-md-flex justify-content-between align-items-center">
                             <div>
-                                <span class="d-block date">{{blg.time}}</span>
+
                                 <h3>{{blg.text}}</h3>
                             </div>
-                            <span class="read">
-                                2 mins read
-                            </span>
+                            <span class="d-block date">{{blg.time}}</span>
                         </a>
                     </li>
                 </ul>

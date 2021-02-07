@@ -1,6 +1,7 @@
 from app import db
 from datetime import datetime,date
 
+# --------------------------------------------Home-------------------------
 
 
 class Home(db.Model):
@@ -9,24 +10,42 @@ class Home(db.Model):
     text=db.Column(db.String(50),nullable=False)
 
 
+# -------------------------------------------About---------------------------
+
+# class Skill(db.Model):
+#     skill_id=db.Column(db.Integer,primary_key=True)
+#     percent=db.Column(db.Integer,nullable=False)
+#     name=db.Column(db.String(50),nullable=False)
+#     abouts = db.relationship('About',backref='skill',lazy=True)
+
 
 
 # class About(db.Model):
 #     about_id=db.Column(db.Integer,primary_key=True)
 #     about_text=db.Column(db.String(255),nullable=False)
 #     about_title=db.Column(db.String(50),nullable=False)
-#     skills=db.relationship("Skill",backref='about',lazy=True)
-#     image=db.Column(db.String(50),nullable=False)
+#     image=db.Column(db.String,nullable=False)
+#     skill_id = db.Column(db.Integer,db.ForeignKey('skill.id'),nullable=False)
+
+
+# ------------------------------------------Portfolio---------------------------
+
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String,nullable=False)
+    title= db.Column(db.String,nullable=False)
+    portfolies = db.relationship('Portfolio',backref='category',lazy=True)
+
+class Portfolio(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String,nullable=False)
+    image = db.Column(db.String,nullable=False)
+    category_id = db.Column(db.Integer,db.ForeignKey('category.id'),nullable=False)
 
 
 
-# class Skill(db.Model):
-#     skill_id=db.Column(db.Integer,primary_key=True)
-#     percent=db.Column(db.Integer,nullable=False)
-#     name=db.Column(db.String(50),nullable=False)
-#     about_id=db.Column(db.Integer,db.ForeignKey("about.about_id"),nullable=False)
 
-
+# ---------------------------------------------Services-------------------------
 
 
 
@@ -35,6 +54,7 @@ class Services(db.Model):
     title=db.Column(db.String(50),nullable=False)
     text=db.Column(db.String(50),nullable=False)
 
+# ----------------------------------------------Resume-------------------------
 
 
 class Resume(db.Model):
@@ -43,6 +63,7 @@ class Resume(db.Model):
     fullname=db.Column(db.String(50),nullable=False)
     image=db.Column(db.String)
 
+# -----------------------------------------------Blog-------------------------
 
 
 
@@ -53,6 +74,7 @@ class Blog(db.Model):
     image=db.Column(db.String)
     time=db.Column(db.DateTime)
 
+# -----------------------------------------------Contact-------------------------
 
 
 class Contact(db.Model):
@@ -63,6 +85,7 @@ class Contact(db.Model):
     message=db.Column(db.String(255))
 
    
+# -----------------------------------------------Footer-------------------------
 
 
 
@@ -101,13 +124,3 @@ class Footer(db.Model):
 
 
 
-# class Category(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String,nullable=False)
-#     portfolies = db.relationship('Portfolio',backref='category',lazy=True)
-
-# class Portfolio(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     title = db.Column(db.String,nullable=False)
-#     image = db.Column(db.String,nullable=False)
-#     category_id = db.Column(db.Integer,db.ForeignKey('category.id'),nullable=False)

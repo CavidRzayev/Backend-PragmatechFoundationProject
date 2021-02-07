@@ -9,6 +9,8 @@ import os
 
 @app.route('/',methods=["GET","POST"])
 def Index():
+     ctg=Category.query.all()
+     prt=Portfolio.query.all()
      Homm=Home.query.all()
      rsm=Resume.query.all()
      blg=Blog.query.all()
@@ -23,7 +25,7 @@ def Index():
           db.session.add(contact)
           db.session.commit()
           return redirect ('/')
-     return render_template('app/index.html',srvc=srvc,blg=blg,rsm=rsm,Homm=Homm)
+     return render_template('app/index.html',srvc=srvc,blg=blg,rsm=rsm,Homm=Homm,ctg=ctg,prt=prt)
 
 
 

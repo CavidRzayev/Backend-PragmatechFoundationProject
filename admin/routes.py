@@ -48,6 +48,64 @@ def deleteHome(id):
     db.session.commit()
     return redirect ('/admin/home')
 
+#------------------------------------------------------- Portfolio-------------------------------------------------------
+# -------Category------
+@admin.route('/category' , methods=["GET","POST"])
+def categoriespages():
+    ctg=Category.query.all()
+    if request.method == "POST":
+        ctg=Category(name=request.form["name"], title=request.form["title"])
+        db.session.add(ctg)
+        db.session.commit()
+        return redirect('/admin/category')
+    return render_template('/admin/Category/category.html',ctg=ctg)
+
+
+@admin.route('/category/<int:id>')
+def deleteCategory(id):
+    ctg = Category.query.get(id)
+    db.session.delete(ctg)
+    db.session.commit()
+    return redirect ('/admin/category')
+    
+
+# -------Portfolio--------------------------------------
+
+@admin.route('/portfolio' , methods=["GET","POST"])
+def portfoliopages():
+    ctg=Category.query.all()
+    prt=Portfolio.query.all()
+    if request.method == "POST":
+        rand=random.randint(1, 9999)
+        f = request.files['image']
+        newName=f"blogfile{rand}.{f.filename.split('.')[-1]}"
+        f.save(os.path.join(app.config['UPLOAD_PATH'],newName))
+        filePath=f"/{app.config['UPLOAD_PATH']}/{newName}" 
+
+        prt=Portfolio(title=request.form["title"],category_id=request.form["category"],image=filePath)
+        db.session.add(prt)
+        db.session.commit()
+        return redirect('/admin/portfolio')
+    return render_template('/admin/Portfolio/portfolio.html',prt=prt,ctg=ctg)
+
+
+@admin.route('/portfolio/<int:id>')
+def deletePortfolio(id):
+    prt = Portfolio.query.get(id)
+    db.session.delete(prt)
+    db.session.commit()
+    return redirect ('/admin/portfolio')
+    
+
+
+
+
+
+
+
+
+
+
 
 # ----------------------------------------------------SERVICES---------------------------------------------------------------
 
@@ -84,8 +142,8 @@ def blog():
         f = request.files['image']
         newName=f"blogfile{rand}.{f.filename.split('.')[-1]}"
         f.save(os.path.join(app.config['UPLOAD_PATH'],newName))
-        filePath=f"/{app.config['UPLOAD_PATH']}/{f.filename}" 
-        blg=Blog(text=request.form['text'],title=request.form['title'],image=filePath,time=datetime("%m"))
+        filePath=f"/{app.config['UPLOAD_PATH']}/{newName}" 
+        blg=Blog(text=request.form['text'],title=request.form['title'],image=filePath,time=today)
         db.session.add(blg)
         db.session.commit()
         return redirect ('/admin/blog')
@@ -110,50 +168,6 @@ def deleteBlog(id):
 
 
 
-# @admin.route('/blog')
-# def blog():
-#     blogs = Blog.query.all()
-#     return render_template('admin/Blog/blog.html',blogList=blogs)
-
-
-# @admin.route('/blog/addblog', methods=['GET', 'POST'])
-# def addBlog():
-#     blogform = BlogForm()
-#     if request.method == 'POST':
-#         file = blogform.blog_image.data
-#         file.save(file.filename)
-#         blog = Blog (blog_title = blogform.blog_title.data,blog_image = file.filename,blog_content = blogform.blog_content.data,blog_date = date.today())
-#         db.session.add(blog)
-#         db.session.commit()
-#         return redirect ('/admin/blog')
-#     return render_template('Blog/addblog.html', form=blogform)
-
-
-# @admin.route('/blog/update/<int:id>', methods=['GET', 'POST'])
-# def updateBlog(id):
-#     blog = Blog.query.get(id)
-#     blogform = BlogForm()
-#     if request.method == 'POST':
-#         file = blogform.blog_img.data
-#         file.save(file.filename)
-#         newTitle = blogform.blog_title.data
-#         newImg = file.filename
-#         newContent = blogform.blog_content.data
-#         blog.blog_title = newTitle
-#         blog.blog_image = newImg
-#         blog.blog_content = newContent
-#         db.session.merge(blog)
-#         db.session.flush()
-#         db.session.commit()
-#         return redirect ('/admin/blog')
-#     return render_template('Blog/update.html', form=blogform, blog=blog)
-
-# @admin.route('/blog/delete/<int:id>')
-# def deleteBlog(id):
-#     blog = Blog.query.get(id)
-#     db.session.delete(blog)
-#     db.session.commit()
-#     return redirect ('/admin/blog')
 
 # --------------------------------------------------Resume--------------------------------------------------------------
 
@@ -161,7 +175,13 @@ def deleteBlog(id):
 def resume():
     rsm=Resume.query.all()
     if request.method == "POST":
-        rsm=Resume(text=request.form['text'],fullname=request.form['name'])
+        rand=random.randint(1, 9999)
+        f = request.files['image']
+        newName=f"blogfile{rand}.{f.filename.split('.')[-1]}"
+        f.save(os.path.join(app.config['UPLOAD_PATH'],newName))
+        filePath=f"/{app.config['UPLOAD_PATH']}/{newName}" 
+        
+        rsm=Resume(text=request.form['text'],fullname=request.form['name'],image=filePath)
         db.session.add(rsm)
         db.session.commit()
         return redirect ('/admin/resume')
@@ -176,21 +196,7 @@ def deleteResume(id):
     return redirect ('/admin/resume')
 
 
-# @app.route('/resume/<int:id>',methods=['GET','POST'])
-# def updateResume(id):
-#     rsm=Resume.query.get(id)
-#     if request.method=='POST':
-#         newText=request.form['text']
-#         newFullname=request.form['name']
-        
-#         rsm.text=newText
-#         rsm.name=newFullname  
-#         db.session.merge(rsm)
-#         db.session.flush()
-#         db.session.commit()
-#         return redirect('/admin/resume')
-#     else:
-#         return render_template('admin.html',rsm=rsm)
+
 
 
 
