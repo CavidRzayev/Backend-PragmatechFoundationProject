@@ -41,7 +41,7 @@
         <div class="filters-content mb-5" data-aos="fade-up" data-aos-delay="200">
             <div class="row grid">
                 {% for i in prt %}
-                <div class="single-portfolio col-sm-4 all mockup">
+                <div class="single-portfolio col-sm-4 all mockup" id="{{i.category_id}}" >
                     <a y={{i.image}} data-fancybox="gal">
                         <img src={{i.image}} alt="Image" class="img-fluid">
                         <div class="contents">

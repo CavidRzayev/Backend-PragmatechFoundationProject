@@ -1,15 +1,15 @@
-{% extends "admin/base.html" %}
+<!-- {% extends "admin/base.html" %}
 {% block content %}
 
 
 
-<form action="/admin/resume" method="POST">
+<form action="/admin/skill" method="POST"  enctype="multipart/form-data">
     <div class="form-group">
         <label for="percent">Percent</label>
-        <input type="text" class="form-control" name="percent" id="percent" placeholder="percent" >
+        <input type="percent" class="form-control" name="percent" id="percent" placeholder="percent" >
     </div>
     <div class="form-group">
-        <label for="name">Fullname</label>
+        <label for="name">Name</label>
         <input type="name" class="form-control" name="name" id="name" placeholder="name">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -22,7 +22,7 @@
     <thead>
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">Peercent</th>
+            <th scope="col">Percent</th>
             <th scope="col">Name</th>
 
 
@@ -34,11 +34,11 @@
             <td>{{i.id}}</td>
             <td>{{i.percent}}</td>
             <td>{{i.name}}</td>
-            <!-- <td><a href="/admin/resume/{{i.id}}" > <i class="far fa-trash-alt"></i></a></td>
-            <td><a href="/admin/resume/{{i.id}}" > <i class="fas fa-edit"></i></i></a></td> -->
+            <td><a href="/admin/skill/{{i.id}}" > <i class="far fa-trash-alt"></i></a></td>
+            <!-- <td><a href="/admin/resume/{{i.id}}" > <i class="fas fa-edit"></i></i></a></td> --> -->
 
         </tr>
         {% endfor %}
     </tbody>
 </table>
-{% endblock %}
+{% endblock %} -->

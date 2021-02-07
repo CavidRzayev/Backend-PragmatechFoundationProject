@@ -48,6 +48,71 @@ def deleteHome(id):
     db.session.commit()
     return redirect ('/admin/home')
 
+#------------------------------------------------------ABOUT----------------------------------------------------------
+
+
+# # -------Skill------
+# @admin.route('/skill' , methods=["GET","POST"])
+# def skillpages():
+#     skl=Skill.query.all()
+#     if request.method == "POST":
+#         skl=Skill(percent=request.form["percent"], name=request.form["name"])
+#         db.session.add(skl)
+#         db.session.commit()
+#         return redirect('/admin/skill')
+#     return render_template('/admin/Skill/skill.html',skl=skl)
+
+
+# @admin.route('/skill/<int:id>')
+# def deleteSkill(id):
+#     skl = Skill.query.get(id)
+#     db.session.delete(skl)
+#     db.session.commit()
+#     return redirect ('/admin/skill')
+    
+
+# # -------About---------
+
+# @admin.route('/about' , methods=["GET","POST"])
+# def aboutPages():
+#     skl=Skill.query.all()
+#     abt=About.query.all()
+#     if request.method == "POST":
+#         rand=random.randint(1, 9999)
+#         f = request.files['image']
+#         newName=f"blogfile{rand}.{f.filename.split('.')[-1]}"
+#         f.save(os.path.join(app.config['UPLOAD_PATH'],newName))
+#         filePath=f"/{app.config['UPLOAD_PATH']}/{newName}" 
+
+#         abt=About(about_text=request.form["about_text"],about_title=request.form["about_title"],image=filePath)
+#         db.session.add(abt)
+#         db.session.commit()
+#         return redirect('/admin/about')
+#     return render_template('/admin/About/about.html',skl=skl,abt=abt)
+
+
+# @admin.route('/about/<int:id>')
+# def deleteAbout(id):
+#     abt = About.query.get(id)
+#     db.session.delete(abt)
+#     db.session.commit()
+#     return redirect ('/admin/about')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #------------------------------------------------------- Portfolio-------------------------------------------------------
 # -------Category------
 @admin.route('/category' , methods=["GET","POST"])
@@ -69,7 +134,7 @@ def deleteCategory(id):
     return redirect ('/admin/category')
     
 
-# -------Portfolio--------------------------------------
+# -------Portfolio---------
 
 @admin.route('/portfolio' , methods=["GET","POST"])
 def portfoliopages():
