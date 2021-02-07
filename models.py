@@ -8,6 +8,8 @@ class Home(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     title=db.Column(db.String(50),nullable=False)
     text=db.Column(db.String(50),nullable=False)
+    image = db.Column(db.String,nullable=False)
+
 
 
 # -------------------------------------------About---------------------------
@@ -15,6 +17,7 @@ class Home(db.Model):
 class Skill(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     percent=db.Column(db.Integer,nullable=False)
+    title=db.Column(db.String(50),nullable=False)
     name=db.Column(db.String(50),nullable=False)
     abouts = db.relationship('About',backref='skill',lazy=True)
 

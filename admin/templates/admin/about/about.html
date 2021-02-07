@@ -1,27 +1,30 @@
-<!-- {% extends "admin/base.html" %}
+{% extends "admin/base.html" %}
 {% block content %}
 
 
 
 <form action="/admin/about" method="POST"  enctype="multipart/form-data">
     <div class="form-group">
-        <label for="about_text">Text</label>
-        <input type="text" class="form-control" name="about_text" id="about_text" placeholder="about_text" >
+        <label for="text">Text</label>
+        <input type="text" class="form-control" name="text" id="text" placeholder="text" >
     </div>
     <div class="form-group">
-        <label for="about_title">Name</label>
-        <input type="text" class="form-control" name="about_title" id="about_title" placeholder="about_title">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" name="title" id="title" placeholder="title">
     </div>
     <div class="form-group">
         <label for="image">Image</label>
         <input type="file" class="form-control" name="image" id="image" placeholder="image">
     </div>
-   
+    <div class="form-group">
+        <label for="skill_id">Skill_id</label>
+        <input type="skill_id" class="form-control" name="skill_id" id="skill_id" placeholder="Skill Id">
+    </div>
    
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
-
+skill_id
 
 
 <table class="table">
@@ -29,20 +32,24 @@
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Text</th>
-            <th scope="col">Name</th>
+            <th scope="col">Title</th>
             <th scope="col">Image</th>
+            <th scope="col">skill_id</th>
+
         </tr>
     </thead>
     <tbody>
-        {% for i in rsm %}
+        {% for i in abt %}
         <tr>
             <td>{{i.id}}</td>
             <td>{{i.text}}</td>
-            <td>{{i.name}}</td>
+            <td>{{i.title}}</td>
             <td>{{i.image}}</td>
+            <td>{{i.skill_id}}</td>
+
             <td><a href="/admin/about/{{i.id}}" > <i class="far fa-trash-alt"></i></a></td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-{% endblock %} -->
+{% endblock %}

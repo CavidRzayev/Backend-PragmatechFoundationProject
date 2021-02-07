@@ -49,27 +49,26 @@
       </div>
     </div>
   </nav>
-  <div class="site-blocks-cover overlay" style="background-image: url(../static/app/js/hero_img.jpg);" data-aos="fade"
+  {% for i in Homm %}
+
+  <div class="site-blocks-cover overlay" style="background-image: url({{i.image}});" data-aos="fade"
     data-stellar-background-ratio="0.5" id="home-section">
     <div class="container">
-      {% for i in Homm %}
       <div class="row align-items-center justify-content-center text-center">
         <div class="col-lg-8">
-          <h1 class="text-white" data-aos="fade-up" data-aos-delay="0">{{i.title}}
-          </h1>
-          <p data-aos="fade-up" data-aos-delay="100">{{i.text}} <a href="https://colorlib/.com"
-              class="font-weight-bold" target="_blank"></a></p>
+          <h1 class="text-white" data-aos="fade-up" data-aos-delay="0">{{i.title}} <br> </h1>
+          <p data-aos="fade-up" data-aos-delay="100">{{i.text}} <a href="https://colorlib/.com" class="font-weight-bold"
+              target="_blank"></a></p>
         </div>
       </div>
-      {% endfor %}
     </div>
   </div>
+  {% endfor %}
 
 
-    {% block content %}
-    
-    
-    {% endblock %}
+
+  {% block content %}
+  {% endblock %}
 
   <div class="site-footer">
     <div class="footer-dots"></div>

@@ -1,4 +1,4 @@
-<!-- {% extends "admin/base.html" %}
+{% extends "admin/base.html" %}
 {% block content %}
 
 
@@ -12,6 +12,10 @@
         <label for="name">Name</label>
         <input type="name" class="form-control" name="name" id="name" placeholder="name">
     </div>
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="title" class="form-control" name="title" id="title" placeholder="title">
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
@@ -24,21 +28,22 @@
             <th scope="col">Id</th>
             <th scope="col">Percent</th>
             <th scope="col">Name</th>
+            <th scope="col">Title</th>
+
 
 
         </tr>
     </thead>
     <tbody>
-        {% for i in rsm %}
+        {% for i in skl %}
         <tr>
             <td>{{i.id}}</td>
             <td>{{i.percent}}</td>
             <td>{{i.name}}</td>
+            <td>{{i.title}}</td>
             <td><a href="/admin/skill/{{i.id}}" > <i class="far fa-trash-alt"></i></a></td>
-            <!-- <td><a href="/admin/resume/{{i.id}}" > <i class="fas fa-edit"></i></i></a></td> --> -->
-
         </tr>
         {% endfor %}
     </tbody>
 </table>
-{% endblock %} -->
+{% endblock %}

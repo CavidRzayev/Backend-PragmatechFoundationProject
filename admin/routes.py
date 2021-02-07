@@ -35,7 +35,12 @@ def deleteContact(id):
 def homepage():
     Homm=Home.query.all()
     if request.method == "POST":
-        Homm=Home(title=request.form["title"], text=request.form["text"])
+        rand=random.randint(1, 9999)
+        f = request.files['image']
+        newName=f"blogfile{rand}.{f.filename.split('.')[-1]}"
+        f.save(os.path.join(app.config['UPLOAD_PATH'],newName))
+        filePath=f"/{app.config['UPLOAD_PATH']}/{newName}" 
+        Homm=Home(title=request.form["title"], text=request.form["text"],image=filePath)
         db.session.add(Homm)
         db.session.commit()
         return redirect('/admin/home')
@@ -51,63 +56,52 @@ def deleteHome(id):
 #------------------------------------------------------ABOUT----------------------------------------------------------
 
 
-# # -------Skill------
-# @admin.route('/skill' , methods=["GET","POST"])
-# def skillpages():
-#     skl=Skill.query.all()
-#     if request.method == "POST":
-#         skl=Skill(percent=request.form["percent"], name=request.form["name"])
-#         db.session.add(skl)
-#         db.session.commit()
-#         return redirect('/admin/skill')
-#     return render_template('/admin/Skill/skill.html',skl=skl)
+# -------Skill------
+@admin.route('/skill' , methods=["GET","POST"])
+def skillspage():
+    skl=Skill.query.all()
+    if request.method == "POST":
+        skl=Skill(percent=request.form["percent"], name=request.form["name"],title=request.form["title"])
+        db.session.add(skl)
+        db.session.commit()
+        return redirect('/admin/skill')
+    return render_template('/admin/Skill/skill.html',skl=skl)
 
 
-# @admin.route('/skill/<int:id>')
-# def deleteSkill(id):
-#     skl = Skill.query.get(id)
-#     db.session.delete(skl)
-#     db.session.commit()
-#     return redirect ('/admin/skill')
+@admin.route('/skill/<int:id>')
+def deleteSkill(id):
+    skl = Skill.query.get(id)
+    db.session.delete(skl)
+    db.session.commit()
+    return redirect ('/admin/skill')
     
 
-# # -------About---------
+# -------About---------
 
-# @admin.route('/about' , methods=["GET","POST"])
-# def aboutPages():
-#     skl=Skill.query.all()
-#     abt=About.query.all()
-#     if request.method == "POST":
-#         rand=random.randint(1, 9999)
-#         f = request.files['image']
-#         newName=f"blogfile{rand}.{f.filename.split('.')[-1]}"
-#         f.save(os.path.join(app.config['UPLOAD_PATH'],newName))
-#         filePath=f"/{app.config['UPLOAD_PATH']}/{newName}" 
+@admin.route('/about' , methods=["GET","POST"])
+def aboutPages():
+    skl=Skill.query.all()
+    abt=About.query.all()
+    if request.method == "POST":
+        rand=random.randint(1, 9999)
+        f = request.files['image']
+        newName=f"blogfile{rand}.{f.filename.split('.')[-1]}"
+        f.save(os.path.join(app.config['UPLOAD_PATH'],newName))
+        filePath=f"/{app.config['UPLOAD_PATH']}/{newName}" 
 
-#         abt=About(about_text=request.form["about_text"],about_title=request.form["about_title"],image=filePath)
-#         db.session.add(abt)
-#         db.session.commit()
-#         return redirect('/admin/about')
-#     return render_template('/admin/About/about.html',skl=skl,abt=abt)
-
-
-# @admin.route('/about/<int:id>')
-# def deleteAbout(id):
-#     abt = About.query.get(id)
-#     db.session.delete(abt)
-#     db.session.commit()
-#     return redirect ('/admin/about')
+        abt=About(text=request.form["text"],title=request.form["title"],skill_id=request.form["skill_id"],image=filePath)
+        db.session.add(abt)
+        db.session.commit()
+        return redirect('/admin/about')
+    return render_template('/admin/About/about.html',skl=skl,abt=abt)
 
 
-
-
-
-
-
-
-
-
-
+@admin.route('/about/<int:id>')
+def deleteAbout(id):
+    abt = About.query.get(id)
+    db.session.delete(abt)
+    db.session.commit()
+    return redirect ('/admin/about')
 
 
 
