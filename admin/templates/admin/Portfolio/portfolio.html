@@ -47,9 +47,9 @@
             <td>{{i.id}}</td>
             <td>{{i.title}}</td>
             <td>{{i.image}}</td>
-            {% for c in ctg %}
-            {% if c.id==i.category_id %}
-            <td>{{c.name}}</td>
+            {% for i in ctg %}
+            {% if i.id==i.category_id %}
+            <td>{{i.name}}</td>
             {% endif %}
             {% endfor %}          
             <td><a href="/admin/portfolio/{{i.id}}"> <i class="far fa-trash-alt"></i> </a> </td>

@@ -60,9 +60,9 @@
                     <a y={{i.image}} data-fancybox="gal">
                         <img src={{i.image}} alt="Image" class="img-fluid">
                         <div class="contents">
-                            {% for c in ctg %}
-                            {% if c.id==i.category %}
-                            <h3>{{c.name}}</h3>
+                            {% for i in ctg %}
+                            {% if i.id==i.category %}
+                            <h3>{{i.name}}</h3>
                             {% endif %}
                             {% endfor %}
                             <div class="cat">{{i.title}}</div>

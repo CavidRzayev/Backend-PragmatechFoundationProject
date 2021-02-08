@@ -61,7 +61,7 @@ def deleteHome(id):
 def skillspage():
     skl=Skill.query.all()
     if request.method == "POST":
-        skl=Skill(percent=request.form["percent"], name=request.form["name"],title=request.form["title"])
+        skl=Skill(percent=request.form["percent"], name=request.form["name"])
         db.session.add(skl)
         db.session.commit()
         return redirect('/admin/skill')
@@ -113,7 +113,7 @@ def deleteAbout(id):
 def categoriespages():
     ctg=Category.query.all()
     if request.method == "POST":
-        ctg=Category(name=request.form["name"], title=request.form["title"])
+        ctg=Category(name=request.form["name"])
         db.session.add(ctg)
         db.session.commit()
         return redirect('/admin/category')
@@ -288,7 +288,8 @@ def deleteFooter(id):
 def connect(): 
     con=Connect.query.all()
     if request.method == "POST":
-        con=Connect(instagram=request.form["instagram"],title=request.form["title"],  pinterest=request.form["pinterest"],twitter=request.form["twitter"],facebook=request.form["facebook"], linkedin=request.form["linkedin"])
+        con=Connect(instagram=request.form["instagram"],title=request.form["title"],  pinterest=request.form["pinterest"],twitter=request.form["twitter"],
+            facebook=request.form["facebook"], linkedin=request.form["linkedin"],dribble=request.form["dribble"])
         db.session.add(con)
         db.session.commit()
         return redirect ('/admin/connect')

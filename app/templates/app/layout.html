@@ -8,8 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="" />
   <meta name="keywords" content="" />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../static/app/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />  <link rel="stylesheet" href="../static/app/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/app/css/owl.carousel.min.css">
   <link rel="stylesheet" href="../static/app/css/owl.theme.default.min.css">
   <link rel="stylesheet" href="../static/app/css/jquery.fancybox.min.css">
@@ -32,7 +31,7 @@
   <nav class="site-nav js-site-navbar mb-5 site-navbar-target">
     <div class="container">
       <div class="site-navigation text-center">
-        <a href="index.html" class="d-block text-center float-left logo">JA</a>
+        <a href="#home-section" class="d-block text-center float-left logo">SO</a>
         <ul class="js-clone-nav ml-0 pl-0 d-none d-lg-inline-block site-menu mx-auto text-center">
           <li class="active"><a href="#home-section" class="nav-link">Home</a></li>
           <li><a href="#about-section" class="nav-link">About</a></li>
@@ -76,7 +75,7 @@
       <div class="row">
         <div class="col-lg-4">
           {% for i in ftr %}
-          
+
           <div class="widget">
             <h3>{{i.title}}<span class="text-primary">.</span> </h3>
             <p>{{i.text}}</p>
@@ -84,28 +83,31 @@
           {% endfor %}
 
           <div class="widget">
-            
+
             {% for i in con %}
             <h3>{{i.title}}</h3>
-        
 
-            
+
+
             <ul class="list-unstyled social">
-              <li><a href="{{i.instagram}}"><span><i class="fab fa-instagram"></i></span></a></li>
-              <li><a href="{{i.twitter}}">  <span> <i class="fab fa-twitter"></i></span></a></li>
-              <li><a href="{{i.facebook}}"> <span> <i class=" fab fa-facebook-f"></i></span></a></li>
-              <li><a href="{{i.linkedin}}"> <span><i class="fab fa-linkedin-in"></i></span></a></li>
-              <li><a href="{{i.pinterest}}"><span>  <i class=" fab fa-pinterest-p"></i> </span></a></li>
+              <li> <a href="{{i.instagram}}"> <i class="fab fa-instagram"></i> </a></li>
+              <li><a href="{{i.twitter}}">    <i class=" fab fa-twitter"></i> </a></li>
+              <li><a href="{{i.facebook}}">   <i class=" fab fa-facebook-f"></i> </a></li>
+              <li><a href="{{i.linkedin}}">   <i class="fab fa-linkedin-in"></i> </a></li>
+              <li><a href="{{i.pinterest}}">  <i class=" fab fa-pinterest-p"></i></a></li>
+              <li><a href="{{i.pinterest}}">  <i class=" fab fa-pinterest-p"></i></a></li>
+
             </ul>
-            {% endfor %}
           </div>
+          {% endfor %}
+
         </div>
-       
+
         <div class="col-lg-2 ml-auto">
           <div class="widget">
             <h3>Navagation</h3>
             {% for i in ftr %}
-            
+
             <ul class="list-unstyled float-left links">
               <li><a href="#about-section">{{i.name}}</a></li>
             </ul>
@@ -117,7 +119,7 @@
           <div class="widget">
             <h3>Services</h3>
             {% for i in ftr %}
-            
+
             <ul class="list-unstyled float-left links">
               <li><a href="#services-section"> {{i.name1}}</a></li>
             </ul>
@@ -125,23 +127,22 @@
 
           </div>
         </div>
-     
-        
+
+
         <div class="col-lg-3">
           <div class="widget">
-            <h3>Contact</h3>  
-             {% for i in ftr %}
+            <h3>Contact</h3>
+            {% for i in ftr %}
             <address>{{i.adress}}</address>
             <ul class="list-unstyled links mb-4">
               <li><a href="tel://11234567890">{{i.elaqe}}</a></li>
               <li><a
                   href="https://preview.colorlib.com/cdn-cgi/l/email-protection#4f262129200f22362b20222e2621612c2022"><span
-                    class="__cf_email__"
-                    data-cfemail="2d44434b426d40544942404c4443034e4240">{{i.email}}</span></a></li>
+                    class="__cf_email__" data-cfemail="2d44434b426d40544942404c4443034e4240">{{i.email}}</span></a></li>
             </ul>
           </div>
         </div>
-      </div>      
+      </div>
       {% endfor %}
       <div class="row mt-5">
         <div class="col-12 text-center">

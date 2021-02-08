@@ -17,7 +17,6 @@ class Home(db.Model):
 class Skill(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     percent=db.Column(db.Integer,nullable=False)
-    title=db.Column(db.String(50),nullable=False)
     name=db.Column(db.String(50),nullable=False)
     abouts = db.relationship('About',backref='skill',lazy=True)
 
@@ -36,7 +35,6 @@ class About(db.Model):
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String,nullable=False)
-    title= db.Column(db.String,nullable=False)
     portfolies = db.relationship('Portfolio',backref='category',lazy=True)
 
 class Portfolio(db.Model):
@@ -123,6 +121,8 @@ class Connect(db.Model):
     twitter = db.Column(db.String)
     facebook = db.Column(db.String)
     linkedin = db.Column(db.String)
+    dribble = db.Column(db.String)
+
 
 
 

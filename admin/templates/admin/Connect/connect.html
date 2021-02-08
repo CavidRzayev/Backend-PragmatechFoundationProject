@@ -30,6 +30,10 @@
         <label for="title">title</label>
         <input type="text" class="form-control" name="title" id="title" placeholder="title">
     </div>
+    <div class="form-group">
+        <label for="dribble">dribble</label>
+        <input type="url" class="form-control" name="dribble" id="dribble" placeholder="dribble">
+    </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
@@ -47,6 +51,7 @@
             <th scope="col">twitter</th>
             <th scope="col">facebook</th>
             <th scope="col">linkedin</th>
+            <th scope="col">dribble</th>
             <th scope="col">delete</th>
         </tr>
     </thead>
@@ -62,6 +67,7 @@
             <td>{{i.twitter}}</td>
             <td>{{i.facebook}}</td>
             <td>{{i.linkedin}}</td>
+            <td>{{i.dribble}}</td>
             <td><a href="/admin/connect/{{i.id}}" > <i class="far fa-trash-alt"></i></a></td>
 
         </tr>
