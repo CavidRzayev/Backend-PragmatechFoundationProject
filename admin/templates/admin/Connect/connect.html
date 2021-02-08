@@ -1,0 +1,71 @@
+{% extends "admin/base.html" %}
+{% block content %}
+
+
+
+<form action="/admin/connect" method="POST" >
+    <div class="form-group">
+        <label for="instagram">instagram</label>
+        <input type="url" class="form-control" name="instagram" id="instagram" placeholder="instagram">
+    </div>
+
+    <div class="form-group">
+        <label for="pinterest">pinterest</label>
+        <input type="url" class="form-control" name="pinterest" id="pinterest" placeholder="pinterest">
+    </div>
+
+    <div class="form-group">
+        <label for="twitter">twitter</label>
+        <input type="url" class="form-control" name="twitter" id="twitter" placeholder="twitter">
+    </div>
+    <div class="form-group">
+        <label for="facebook">facebook</label>
+        <input type="url" class="form-control" name="facebook" id="facebook" placeholder="facebook">
+    </div>
+    <div class="form-group">
+        <label for="linkedin">linkedin</label>
+        <input type="url" class="form-control" name="linkedin" id="linkedin" placeholder="linkedin">
+    </div>
+    <div class="form-group">
+        <label for="title">title</label>
+        <input type="text" class="form-control" name="title" id="title" placeholder="title">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">title</th>
+            <th scope="col">instagram</th>
+            <th scope="col">pinterest</th>
+            <th scope="col">twitter</th>
+            <th scope="col">facebook</th>
+            <th scope="col">linkedin</th>
+            <th scope="col">delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        {% for i in con %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.title}}</td>
+            <td>{{i.instagram}}</td>
+            <td>{{i.pinterest}}</td>
+            <td>{{i.twitter}}</td>
+            <td>{{i.facebook}}</td>
+            <td>{{i.linkedin}}</td>
+            <td><a href="/admin/connect/{{i.id}}" > <i class="far fa-trash-alt"></i></a></td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

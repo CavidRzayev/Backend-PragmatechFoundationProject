@@ -1,6 +1,5 @@
 from app import app,db
 from forms import *
-# from app.models import ContactForm
 from models import *
 from flask import render_template,redirect,request,url_for,Blueprint
 import random
@@ -9,6 +8,10 @@ import os
 
 @app.route('/',methods=["GET","POST"])
 def Index():
+     ftr=Footer.query.all()
+     con=Connect.query.all()
+     skl=Skill.query.all()
+     abt=About.query.all()
      ctg=Category.query.all()
      prt=Portfolio.query.all()
      Homm=Home.query.all()
@@ -25,8 +28,7 @@ def Index():
           db.session.add(contact)
           db.session.commit()
           return redirect ('/')
-     return render_template('app/index.html',srvc=srvc,blg=blg,rsm=rsm,Homm=Homm,ctg=ctg,prt=prt)
-
+     return render_template('app/index.html',srvc=srvc,blg=blg,rsm=rsm,Homm=Homm,ctg=ctg,prt=prt,skl=skl,abt=abt,con=con,ftr=ftr)
 
 
 @app.route('/blog/<int:id>',methods=['GET','POST'])

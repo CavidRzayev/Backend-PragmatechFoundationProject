@@ -5,29 +5,33 @@
 <section class="site-section" id="about-section">
     <div class="container">
         <div class="row mb-5 align-items-center">
+            {% for i in abt %}
+
             <div class="col-lg-7 pr-lg-5 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="0">
                 <div class="img-wrap">
-                    <img src="../static/app/images/image_1_long.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="{{i.image}}" alt="Image placeholder" class="img-fluid">
                 </div>
             </div>
             <div class="col-lg-5 pl-lg-5" data-aos="fade-up" data-aos-delay="100">
                 <div class="section-heading">
-                    <h2>My Bio</h2>
+                    <h2>{{i.title}}</h2>
                 </div>
-                <p>Far far away, behind <span class="highlight">the word mountains</span>, far from the countries
-                    Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right
-                    at the coast of the Semantics, a large language ocean.</p>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It
-                    is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                <p>{{i.text}}</p>
                 <div class="my-5">
-                    <div class="skill">
-                        <h3>Design</h3>
+                    {% endfor %}
+
+                    {% for i in skl %}
+                    <div class="{{i.name}}">
+                        <h3>{{i.name}}</h3>
+
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85"
-                                aria-valuemin="0" aria-valuemax="100">
-                                <span>85%</span>
+                            <div class="progress-bar" role="progressbar" style="width: {{i.percent}}"
+                                aria-valuenow="{{i.percent}}" id="{{i.id}}" aria-valuemin="{{i.percent}}"
+                                aria-valuemax="{{i.percent}}">
+                                <span>{{i.percent}}</span>
                             </div>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -45,19 +49,19 @@
             <ul>
                 <li class="active" id="all">All</li>
                 {% for i in ctg %}
-                <li  class="active" data-filter="{{i.id}} "   id="{{i.id}}">{{i.name}}</li>
+                <li class="active" data-filter="{{i.id}} " id="{{i.id}}">{{i.name}}</li>
                 {% endfor %}
             </ul>
         </div>
         <div class="filters-content mb-5" data-aos="fade-up" data-aos-delay="200">
             <div class="row grid">
                 {% for i in prt %}
-                <div class="single-portfolio col-sm-4 all mockup" id="{{i.category_id}}" >
+                <div class="single-portfolio col-sm-4 all mockup" id="{{i.category_id}}">
                     <a y={{i.image}} data-fancybox="gal">
                         <img src={{i.image}} alt="Image" class="img-fluid">
                         <div class="contents">
                             {% for c in ctg %}
-                            {% if  c.id==i.category_id %}
+                            {% if c.id==i.category %}
                             <h3>{{c.name}}</h3>
                             {% endif %}
                             {% endfor %}
@@ -197,21 +201,22 @@
             </div>
             <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
                 <h3 class="h5 mb-4">Contact Info</h3>
-                <address class="text-black d-flex"><span class="mt-1 icon-room mr-2"></span><span>43 Raymouth Rd.
-                        Baltemoer, London 3910</span></address>
+                {% for i in ftr %}
+                
+                <address class="text-black d-flex"><span class="mt-1 icon-room mr-2"></span><span>{{i.adress}}</span></address>
                 <ul class="list-unstyled ul-links mb-4">
                     <li class="mb-3"><a href="tel://11234567890" class="d-flex"><span
-                                class="mt-1 icon-phone mr-2"></span><span>+1(123)-456-7890</span></a></li>
-                    <li class="mb-3"><a href="tel://11234567890" class="d-flex"><span
-                                class="mt-1 icon-phone mr-2"></span><span>+1(123)-456-7890</span></a></li>
+                                class="mt-1 icon-phone mr-2"></span><span>{{i.elaqe}}</span></a></li>
                     <li class="mb-3"><a
                             href="https://preview.colorlib.com/cdn-cgi/l/email-protection#70191e161f301d09141f1d11191e5e131f1d"
                             class="d-flex"><span class="mt-1 icon-envelope mr-2"></span><span><span class="__cf_email__"
-                                    data-cfemail="f79e999198b79a8e93989a969e99d994989a">[email&#160;protected]</span></span></a>
+                                    data-cfemail="f79e999198b79a8e93989a969e99d994989a">{{i.email}}></span></a>
                     </li>
                     <li class="mb-3"><a href="https://colorlib/" target="_blank" class="d-flex"><span
                                 class="mt-1 icon-globe mr-2"></span><span>https://Colorlib/</span></a></li>
                 </ul>
+                {% endfor %}
+
             </div>
         </div>
     </div>

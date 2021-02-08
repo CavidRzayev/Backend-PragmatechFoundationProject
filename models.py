@@ -25,9 +25,9 @@ class Skill(db.Model):
 
 class About(db.Model):
     id=db.Column(db.Integer,primary_key=True)
-    text=db.Column(db.String(255),nullable=False)
-    title=db.Column(db.String(50),nullable=False)
-    image=db.Column(db.String,nullable=False)
+    text=db.Column(db.String(255))
+    title=db.Column(db.String(50))
+    image=db.Column(db.String)
     skill_id = db.Column(db.Integer,db.ForeignKey('skill.id'),nullable=False)
 
 
@@ -96,16 +96,33 @@ class Contact(db.Model):
 class Footer(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     about=db.Column(db.String(55))
-    connect=db.Column(db.String(55))
     navagation=db.Column(db.String(155))
     services=db.Column(db.String(255))
     contact=db.Column(db.String(255))
+    elaqe=db.Column(db.String(255))
+    text=db.Column(db.String(255))
+    name=db.Column(db.String(255))
+    name1=db.Column(db.String(255))
+    title=db.Column(db.String(255))
+    adress=db.Column(db.String(255))
+    email=db.Column(db.String(255))
+
+
+
    
 
 
 
+#------Network--------
 
-
+class Connect(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String)
+    instagram = db.Column(db.String)
+    pinterest = db.Column(db.String)
+    twitter = db.Column(db.String)
+    facebook = db.Column(db.String)
+    linkedin = db.Column(db.String)
 
 
 

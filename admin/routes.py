@@ -268,8 +268,36 @@ def deleteResume(id):
 def footerpages(): 
     ftr=Footer.query.all()
     if request.method == "POST":
-        ftr=Footer(about=request.form["about"],  connect=request.form["connect"],navagation=request.form["navagation"],services=request.form["services"], contact=request.form["contact"])
+        ftr=Footer(about=request.form["about"], navagation=request.form["navagation"],services=request.form["services"], contact=request.form["contact"],
+            elaqe=request.form["elaqe"], text=request.form["text"], name=request.form["name"],name1=request.form["name1"],title=request.form["title"],email=request.form["email"],adress=request.form["adress"],)
         db.session.add(ftr)
         db.session.commit()
         return redirect ('/admin/footer')
     return render_template('admin/Footer/footer.html',ftr=ftr)
+
+@admin.route('/footer/<int:id>')
+def deleteFooter(id):
+    ftr = Footer.query.get(id)
+    db.session.delete(ftr)
+    db.session.commit()
+    return redirect ('/admin/footer')
+
+
+#--------------Network-------
+@admin.route('/connect' , methods=["POST" , "GET"])
+def connect(): 
+    con=Connect.query.all()
+    if request.method == "POST":
+        con=Connect(instagram=request.form["instagram"],title=request.form["title"],  pinterest=request.form["pinterest"],twitter=request.form["twitter"],facebook=request.form["facebook"], linkedin=request.form["linkedin"])
+        db.session.add(con)
+        db.session.commit()
+        return redirect ('/admin/connect')
+    return render_template('admin/Connect/connect.html',con=con)
+
+
+@admin.route('/connect/<int:id>')
+def deleteConect(id):
+    con = Connect.query.get(id)
+    db.session.delete(con)
+    db.session.commit()
+    return redirect ('/admin/connect')
