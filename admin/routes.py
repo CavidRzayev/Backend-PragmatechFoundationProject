@@ -111,19 +111,19 @@ def deleteAbout(id):
 # -------Category------
 @admin.route('/category' , methods=["GET","POST"])
 def categoriespages():
-    ctg=Category.query.all()
+    categories=Category.query.all()
     if request.method == "POST":
-        ctg=Category(name=request.form["name"])
-        db.session.add(ctg)
+        categories=Category(category_name=request.form["name"])
+        db.session.add(categories)
         db.session.commit()
         return redirect('/admin/category')
-    return render_template('/admin/Category/category.html',ctg=ctg)
+    return render_template('/admin/Category/category.html',categories=categories)
 
 
 @admin.route('/category/<int:id>')
 def deleteCategory(id):
-    ctg = Category.query.get(id)
-    db.session.delete(ctg)
+    categories = Category.query.get(id)
+    db.session.delete(categories)
     db.session.commit()
     return redirect ('/admin/category')
     
@@ -132,8 +132,8 @@ def deleteCategory(id):
 
 @admin.route('/portfolio' , methods=["GET","POST"])
 def portfoliopages():
-    ctg=Category.query.all()
-    prt=Portfolio.query.all()
+    categories=Category.query.all()
+    portfolio=Portfolio.query.all()
     if request.method == "POST":
         rand=random.randint(1, 9999)
         f = request.files['image']
@@ -141,17 +141,17 @@ def portfoliopages():
         f.save(os.path.join(app.config['UPLOAD_PATH'],newName))
         filePath=f"/{app.config['UPLOAD_PATH']}/{newName}" 
 
-        prt=Portfolio(title=request.form["title"],category_id=request.form["category"],image=filePath)
-        db.session.add(prt)
+        portfolio=Portfolio(portfolio_title=request.form["title"],category_id=request.form["category"],portfolio_image=filePath)
+        db.session.add(portfolio)
         db.session.commit()
         return redirect('/admin/portfolio')
-    return render_template('/admin/Portfolio/portfolio.html',prt=prt,ctg=ctg)
+    return render_template('/admin/Portfolio/portfolio.html',portfolio=portfolio,categories=categories)
 
 
 @admin.route('/portfolio/<int:id>')
 def deletePortfolio(id):
-    prt = Portfolio.query.get(id)
-    db.session.delete(prt)
+    portfolio = Portfolio.query.get(id)
+    db.session.delete(portfolio)
     db.session.commit()
     return redirect ('/admin/portfolio')
     

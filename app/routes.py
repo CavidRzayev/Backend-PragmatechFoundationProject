@@ -6,14 +6,22 @@ import random
 import os
 
 
+blog = Blueprint(
+    'blog',
+    __name__,
+    url_prefix='/blog',
+    static_folder='static',
+    template_folder='templates')
+
+
 @app.route('/',methods=["GET","POST"])
 def Index():
      ftr=Footer.query.all()
      con=Connect.query.all()
      skl=Skill.query.all()
      abt=About.query.all()
-     ctg=Category.query.all()
-     prt=Portfolio.query.all()
+     categories=Category.query.all()
+     portfolio=Portfolio.query.all()
      Homm=Home.query.all()
      rsm=Resume.query.all()
      blg=Blog.query.all()
@@ -28,10 +36,13 @@ def Index():
           db.session.add(contact)
           db.session.commit()
           return redirect ('/')
-     return render_template('app/index.html',srvc=srvc,blg=blg,rsm=rsm,Homm=Homm,ctg=ctg,prt=prt,skl=skl,abt=abt,con=con,ftr=ftr)
+     return render_template('app/index.html',srvc=srvc,blg=blg,rsm=rsm,Homm=Homm,categories=categories,portfolio=portfolio,skl=skl,abt=abt,con=con,ftr=ftr)
 
 
 @app.route('/blog/<int:id>',methods=['GET','POST'])
 def SingleBlog(id):
-    blog = Blog.query.get(id)
-    return render_template('app/blog.html',blg=blog)
+     ftr=Footer.query.all()
+     Homm=Home.query.all()
+     con=Connect.query.all()
+     blog = Blog.query.get(id)
+     return render_template('app/blog.html',blg=blog,con=con,ftr=ftr,Homm=Homm)

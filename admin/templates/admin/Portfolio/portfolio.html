@@ -5,17 +5,17 @@
 
 <form action="/admin/portfolio" method="POST" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="title">Title</label>
+        <label for="title">Portfolio title</label>
         <input type="title" class="form-control" name="title" id="title" placeholder="Basliq elave edin">
     </div>
 
     <div class="form-group">
-        <label for="category">Category</label>
+        <label for="category">Category Id</label>
         <input type="category" class="form-control" name="category" id="category" placeholder="category">
     </div>
 
     <div class="form-group">
-        <label for="image">Image</label>
+        <label for="image">Portfolio image</label>
         <input type="file" class="form-control" name="image" id="image" placeholder="image">
     </div>
 
@@ -29,9 +29,9 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Title</th>
-            <th scope="col">image</th>
+            <th scope="col">Portfolio id</th>
+            <th scope="col">Portfolio title</th>
+            <th scope="col">Portfolio image</th>
             <th scope="col">Category Id</th>
             <th scope="col">Delete</th>
 
@@ -42,18 +42,17 @@
         </tr>
     </thead>
     <tbody>
-        {% for i in prt %}
+        {% for portfolies in portfolio %}
         <tr>
-            <td>{{i.id}}</td>
-            <td>{{i.title}}</td>
-            <td>{{i.image}}</td>
-            {% for i in ctg %}
-            {% if i.id==i.category_id %}
-            <td>{{i.name}}</td>
+            <td>{{portfolies.portfolio_id}}</td>
+            <td>{{portfolies.portfolio_title}}</td>
+            <td>{{portfolies.portfolio_image}}</td>
+            {% for category in categories %}
+            {% if category.category_id==portfolies.category_id %}
+            <td>{{category.category_name}}</td>
             {% endif %}
             {% endfor %}          
-            <td><a href="/admin/portfolio/{{i.id}}"> <i class="far fa-trash-alt"></i> </a> </td>
-            <!-- <td><a href="/admin/resume/{{i.id}}" > <i class="fas fa-edit"></i></i></a></td> --> -->
+            <td><a href="/admin/portfolio/{{portfolies.portfolio_id}}"> <i class="far fa-trash-alt"></i> </a> </td>
         </tr>
         {% endfor %}
     </tbody>

@@ -33,15 +33,15 @@ class About(db.Model):
 # ------------------------------------------Portfolio---------------------------
 
 class Category(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String,nullable=False)
+    category_id = db.Column(db.Integer, primary_key=True)
+    category_name = db.Column(db.String,nullable=False)
     portfolies = db.relationship('Portfolio',backref='category',lazy=True)
 
 class Portfolio(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String,nullable=False)
-    image = db.Column(db.String,nullable=False)
-    category_id = db.Column(db.Integer,db.ForeignKey('category.id'),nullable=False)
+    portfolio_id = db.Column(db.Integer, primary_key=True)
+    portfolio_title = db.Column(db.String,nullable=False)
+    portfolio_image = db.Column(db.String,nullable=False)
+    category_id=db.Column(db.Integer, db.ForeignKey('category.category_id'),nullable=False)
 
 
 
